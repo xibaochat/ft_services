@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysql-backup-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: mysql-backup
+          image: mysql_backup:00
+          volumeMounts:
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim0
+      restartPolicy: Never
