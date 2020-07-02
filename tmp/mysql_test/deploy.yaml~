@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-mysql-deployment
+  labels:
+    app: test-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-mysql
+  template:
+    metadata:
+      labels:
+        app: test-mysql
+    spec:
+      containers:
+      - name: test-mysql
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ALLOW_EMPTY_PASSWORD
+            value: "true"
