@@ -8,7 +8,7 @@ WORKDIR /www
 RUN chown -R www:www /var/lib/nginx
 
 #add php
-RUN apk add php7 php7-fpm php7-opcache
+RUN apk add php7 php7-fpm php7-opcache php-json
 RUN apk add php7-gd php7-mysqli php7-zlib php7-curl
 
 COPY source_code /www/wp/
