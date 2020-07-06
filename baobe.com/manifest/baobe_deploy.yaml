@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baobe-deployment
+  labels:
+    app: baobe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: baobe
+  template:
+    metadata:
+      labels:
+        app: baobe
+    spec:
+      containers:
+      - name: baobe
+        image: baobe:00
+        ports:
+        - containerPort: 80
