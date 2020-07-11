@@ -7,3 +7,6 @@ minikube addons enable dashboard > /dev/null
 sub_simple_output "Enable Metallb"
 
 minikube addons enable metallb > /dev/null
+
+#create metallb config map
+bash metallb/setup.sh

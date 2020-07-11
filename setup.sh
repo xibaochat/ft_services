@@ -14,4 +14,5 @@ simple_output "Installing addons"
 eval $(minikube docker-env)
 
 simple_output "Deploying applications"
+
 $SCRIPTS_PATH/app_deployements.sh
