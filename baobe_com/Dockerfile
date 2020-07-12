@@ -4,7 +4,7 @@ RUN	apk update
 RUN apk add nginx
 
 RUN adduser -D -g 'www' www
-WORKDIR /www
+RUN mkdir /www
 RUN chown -R www:www /var/lib/nginx
 
 #add php

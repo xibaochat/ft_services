@@ -6,10 +6,10 @@ source $OUTPUT_FUNCS
 simple_output "Starting ${BLUE}ft_services${NC} setup"
 
 simple_output "Installing binaries"
-#$SCRIPTS_PATH/binaries_installation.sh
+$SCRIPTS_PATH/binaries_installation.sh
 
 simple_output "Installing addons"
-#$SCRIPTS_PATH/addons_installation.sh
+$SCRIPTS_PATH/addons_installation.sh
 
 eval $(minikube docker-env)
 
