@@ -1,0 +1,29 @@
+[outputs]
+[outputs.influxdb]
+    # The full HTTP endpoint URL for your InfluxDB instance
+	    url = "http://influxdb-service:8086" # EDIT THIS LINE
+    # The target database for metrics. This database must already exist
+    database = "bao" # required.
+    username = "user"
+    password = "kraken"
+    # https://github.com/influxdata/telegraf/issues/2496#issuecomment-376725387
+	## If true, no CREATE DATABASE queries will be sent.  Set to true when using
+	## Telegraf with a user without permissions to create databases or when the
+    ## database already exists.
+	# ref: https://octoperf.com/img/blog/kraken-kubernetes-influxdb-grafana-telegraf/telegraf-config.yaml
+	#input plugin is differ from what i need, i need k8s-inventory
+    skip_database_creation = true
+
+# PLUGINS
+# Read metrics about cpu usage
+[cpu]
+    # Whether to report per-cpu stats or not
+    percpu = false
+    # Whether to report total system cpu stats or not
+    totalcpu = true
+
+[[inputs.kube_inventory]]
+  ## URL for the Kubernetes API
+  url = "https://kubernetes"
+  namespace = "default"
+  resource_include = [ "deployments", "nodes"]

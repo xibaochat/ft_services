@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: influxdb-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: influxdb-job
+          image: influxdb_job:00
+          volumeMounts:
+            - name: influxdb-persistent-storage
+              mountPath: /var/lib/influxdb
+            - mountPath: /etc/influxdb/influxdb.conf
+              name: influxdb-config
+              subPath: influxdb.conf
+              readOnly: true
+          envFrom:
+            - secretRef:
+                name: influxdb-secrets
+      volumes:
+        - name: influxdb-persistent-storage
+          persistentVolumeClaim:
+            claimName: influxdb-data
+        - name: influxdb-config
+          configMap:
+            name: influxdb-config
+      restartPolicy: Never

@@ -1,9 +1,9 @@
 # COLOR
-RED="\033[31m"
-YELL="\033[33m"
-BLUE="\033[94m"
-RED="\033[31m"
-NC="\033[39m"
+RED="\e[31m"
+YELL="\e[33m"
+BLUE="\e[94m"
+RED="\e[31m"
+NC="\e[39m"
 
 simple_output() {
 	echo "[${YELL}+${NC}] $@"

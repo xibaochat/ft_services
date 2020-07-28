@@ -9,6 +9,8 @@ docker build mysql/backup -t mysql_backup:00
 
 kubectl apply -f mysql/backup/mysql_backup_pod.yaml
 
+sleep 10
+
 docker build mysql -t mysql:00
 
 kubectl apply -f mysql/manifest/mysql_deploy.yaml
