@@ -10,7 +10,7 @@ docker build influxdb/influxdb_job -t influxdb_job:00
 
 kubectl apply -f influxdb/influxdb_job/influxdb_job.yaml
 
-sleep 20
+sleep 30
 
 docker build influxdb -t influxdb:00
 

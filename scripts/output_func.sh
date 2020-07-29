@@ -6,14 +6,14 @@ RED="\e[31m"
 NC="\e[39m"
 
 simple_output() {
-	echo "[${YELL}+${NC}] $@"
+	echo -e "[${YELL}+${NC}] $@"
 }
 
 sub_simple_output() {
-	echo "\t[${YELL}+${NC}] $@"
+	echo -e "\t[${YELL}+${NC}] $@"
 }
 
 
 simple_error() {
-	echo "[${RED}-${NC}] $@"
+	echo -e "[${RED}-${NC}] $@"
 }
