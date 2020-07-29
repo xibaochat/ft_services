@@ -1,9 +1,0 @@
-Hello,
-Dans le nouveau sujet de ft_services, vous nous demandez d'utiliser un seul loadBlancer pour l'ensemble des deployements.
-```
-Un Load Balancer qui gère l’accès externe à vos services dans un cluster. C’est
-uniquement lui qui vous servira pour exposer vos services.
-```
-Sauf erreur ce n'est pas possible, puisque les services existent (entre autre) pour repartir le traffic entre les pods d'un meme deployement, pas entre les pods de plusieurs deployements.
-
-Du coup; est-ce que
