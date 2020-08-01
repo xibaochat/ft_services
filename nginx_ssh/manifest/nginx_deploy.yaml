@@ -14,9 +14,17 @@ spec:
       labels:
         app: nginx
     spec:
+      volumes:
+      - configMap:
+          name: telegraf-config
+        name: telegraf-config
       containers:
       - name: nginx
         image: nginx_ssh:00
+        volumeMounts:
+        - mountPath: /root
+          name: telegraf-config
+          readOnly: true
         ports:
         - containerPort: 80
         - containerPort: 22

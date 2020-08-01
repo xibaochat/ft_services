@@ -1,2 +1,3 @@
+telegraf -config /root/telegraf.toml &
 nginx -g "daemon off;" &
 /usr/sbin/sshd -D -e

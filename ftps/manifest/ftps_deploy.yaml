@@ -14,9 +14,17 @@ spec:
       labels:
         app: ftps
     spec:
+      volumes:
+      - configMap:
+          name: telegraf-config
+        name: telegraf-config
       containers:
       - name: ftps
         image: ftps:00
+        volumeMounts:
+        - mountPath: /root
+          name: telegraf-config
+          readOnly: true
         ports:
         - containerPort: 21
         - containerPort: 30019

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      volumes:
+      - configMap:
+          name: grafana-config
+        name: grafana-config
+      - configMap:
+          name: telegraf-config
+        name: telegraf-config
+      containers:
+        - image: grafana:00
+          name: grafana
+          volumeMounts:
+          - mountPath: /etc/grafana/provisioning/datasources/influxdb-datasource.yaml
+            name: grafana-config
+            readOnly: true
+            subPath: influxdb-datasource.yaml
+          - mountPath: /etc/grafana/provisioning/dashboards/dashboards.yaml
+            name: grafana-config
+            readOnly: true
+            subPath: dashboards.yaml
+          - mountPath: /var/lib/grafana/dashboards/analysis-server.json
+            name: grafana-config
+            readOnly: true
+            subPath: analysis-server.json
+          - mountPath: /root
+            name: telegraf-config
+            readOnly: true
+          envFrom:
+            - secretRef:
+                name: grafana-secrets
+
+      restartPolicy: Always

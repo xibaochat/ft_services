@@ -22,7 +22,13 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        - mountPath: /root
+          name: telegraf-config
+          readOnly: true
       volumes:
+      - configMap:
+          name: telegraf-config
+        name: telegraf-config
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim0

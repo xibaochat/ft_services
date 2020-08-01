@@ -21,6 +21,5 @@ COPY src/php-fpm.conf /etc/php7/php-fpm.conf
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.14.5-static_linux_amd64.tar.gz
 RUN tar -xf telegraf-1.14.5-static_linux_amd64.tar.gz
 RUN mv telegraf/telegraf /usr/local/bin/
-COPY telegraf.toml /root/telegraf.toml
 
 CMD telegraf -config /root/telegraf.toml & php-fpm7 && nginx -g "daemon off;"

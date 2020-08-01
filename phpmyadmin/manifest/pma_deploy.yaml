@@ -14,8 +14,16 @@ spec:
       labels:
         app: pma
     spec:
+      volumes:
+      - configMap:
+          name: telegraf-config
+        name: telegraf-config
       containers:
       - name: pma
         image: pma:00
+        volumeMounts:
+        - mountPath: /root
+          name: telegraf-config
+          readOnly: true
         ports:
         - containerPort: 80

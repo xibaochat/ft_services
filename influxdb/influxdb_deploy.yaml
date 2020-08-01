@@ -18,12 +18,12 @@ spec:
           ports:
             - containerPort: 8086
           volumeMounts:
-            - mountPath: /var/lib/influxdb
-              name: influxdb-data
-            - mountPath: /etc/influxdb/influxdb.conf
-              name: influxdb-config
-              subPath: influxdb.conf
-              readOnly: true
+          - mountPath: /var/lib/influxdb
+            name: influxdb-data
+          - mountPath: /etc/influxdb/influxdb.conf
+            name: influxdb-config
+            subPath: influxdb.conf
+            readOnly: true
           envFrom:
             - secretRef:
                 name: influxdb-secrets

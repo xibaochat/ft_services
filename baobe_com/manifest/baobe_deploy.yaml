@@ -14,8 +14,16 @@ spec:
       labels:
         app: baobe
     spec:
+      volumes:
+      - configMap:
+          name: telegraf-config
+        name: telegraf-config
       containers:
       - name: baobe
         image: baobe:00
+        volumeMounts:
+        - mountPath: /root
+          name: telegraf-config
+          readOnly: true
         ports:
         - containerPort: 80
