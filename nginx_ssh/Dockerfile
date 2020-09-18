@@ -3,12 +3,14 @@ FROM alpine:latest
 RUN	apk update
 RUN apk add nginx openssh
 
+#SSH
 COPY src/sshd_conf /etc/ssh/sshd_config
 RUN ssh-keygen -A
 RUN mkdir /root/.ssh
 COPY id.pub /root/.ssh/authorized_keys
 RUN chmod 600 /root/.ssh/authorized_keys
 
+#NGINX
 RUN adduser -D -g 'www' www
 WORKDIR /www
 RUN chown -R www:www /var/lib/nginx
