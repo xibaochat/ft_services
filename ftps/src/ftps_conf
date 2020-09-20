@@ -1,3 +1,5 @@
+# https://stackoverflow.com/questions/60458028/ftps-server-doesnt-work-properly-using-kubernetes
+
 listen=YES
 background=YES
 local_enable=YES

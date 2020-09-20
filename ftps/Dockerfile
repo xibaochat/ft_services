@@ -12,7 +12,11 @@ RUN	echo "maobe:bao" |chpasswd
 COPY src/cert_infos.txt /tmp
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt < /tmp/cert_infos.txt
 RUN rm -f /tmp/cert_infos.txt
+
 COPY src/ftps_conf /etc/vsftpd/vsftpd.conf
+ARG LOADBALANCER_IP
+RUN sed -i 's|LOADBALANCER_IP|'"$LOADBALANCER_IP"'|g' /etc/vsftpd/vsftpd.conf
+
 RUN touch /var/log/vsftpd.log && chown maobe: /var/log/vsftpd.log
 
 # TELEGRAF
