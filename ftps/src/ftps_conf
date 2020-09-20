@@ -8,9 +8,13 @@ seccomp_sandbox=NO
 
 # Enable upload by local user.
 write_enable=YES
+
+# passive mode setup
 pasv_enable=YES
 pasv_min_port=30019
 pasv_max_port=30020
+pasv_address=LOADBALANCER_IP
+
 ssl_enable=YES
 allow_anon_ssl=NO
 force_local_data_ssl=NO
