@@ -8,7 +8,6 @@ spec:
   selector:
     app: baobe
   ports:
-    - protocol: TCP
-      name: http
+    - name: http
       port: 5050
-      targetPort: 80
+      targetPort: 5050
