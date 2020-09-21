@@ -5,6 +5,7 @@ RUN apk update
 RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils
 
 #wordpress
+RUN sed -i -e 's/localhost/'"${BAOBE_COM_SVC_IP}:5050"'/g' wordpress_tables.sql
 COPY wordpress_database.sql /root/
 COPY wordpress_tables.sql /root/
 
