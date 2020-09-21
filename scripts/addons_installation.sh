@@ -8,5 +8,6 @@ sub_simple_output "Enable Metallb"
 
 minikube addons enable metallb > /dev/null
 
+sleep 10
 #create metallb config map
 bash metallb/setup.sh
