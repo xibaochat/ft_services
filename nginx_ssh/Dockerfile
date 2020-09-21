@@ -34,7 +34,7 @@ RUN mv telegraf/telegraf /usr/local/bin/
 
 #NGINX CONF
 ARG LOADBALANCER_IP
-RUN sed  -e 's|LOADBALANCER_IP|'"$LOADBALANCER_IP"'|g' nginx_ssh/src/my_nginx.conf
+RUN sed  -i 's|LOADBALANCER_IP|'"$LOADBALANCER_IP"'|g' nginx_ssh/src/my_nginx.conf
 COPY src/my_nginx.conf /etc/nginx/nginx.conf
 
 CMD ash /demarre_nginx_sshd_server
