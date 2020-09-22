@@ -75,4 +75,10 @@ password: new-password
 # Basic user I
 login: 42_user
 password: secretpassword
+
+# Basic user II
+login: junko
+password: secretpassword
 ```
+
+### PhpMyAdmin
