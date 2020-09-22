@@ -15,7 +15,10 @@ curl http://$NGINX_LB_IP
 3. Actually check website
 ```
 curl -k https://$NGINX_LB_IP > cat.html
-xdg-open cat.html
+case $(uname -s) in
+	Darwin*) open cat.html;;
+	Linux*) xdg-open cat.html;;
+esac
 ```
 
 ### Dashboard
