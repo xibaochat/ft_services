@@ -66,7 +66,7 @@ case $(uname -s) in
     Linux*) firefox http://$WP_LB_IP;;
 esac"
 ```
-3. Check available users:
+3. Check available users: (to connect access http://$WP_LB_IP/wp-login.php)
 ```
 # Admin user:
 login: meilv
@@ -82,3 +82,32 @@ password: secretpassword
 ```
 
 ### PhpMyAdmin
+1. Get Loadbalancer IP
+```
+export PMA_LB_IP="`kubectl get services pma-service --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`:5000"
+```
+2. Access website
+```
+bash <<< "
+case $(uname -s) in
+    Darwin*) open -a safari http://$PMA_LB_IP;;
+    Linux*) firefox http://$PMA_LB_IP;;
+esac"
+```
+3. Check available users: (to connect access http://$WP_LB_IP/wp-login.php)
+```
+# Admin user:
+login: sammy
+password: Xibaochat!
+
+# PMA User
+login: pma
+password: Xibaochat!
+
+```
+4. Check wordpress database is linked to PMA
+```
+1. Update password for every user
+UPDATE wp_users set user_pass = MD5('badpassword');
+2. Check you can login to wordpress with the new password
+```
