@@ -135,3 +135,11 @@ esac"
 login: admin
 password: kraken
 ```
+4. Check influxdb is linked to grafana
+```
+bash <<< "
+case $(uname -s) in
+    Darwin*) open -a safari http://$GRAFANA_LB_IP/datasources/edit/1/;;
+    Linux*) firefox http://$GRAFANA_LB_IP/datasources/edit/1/;;
+esac"
+```
