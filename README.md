@@ -143,3 +143,12 @@ case $(uname -s) in
     Linux*) firefox http://$GRAFANA_LB_IP/datasources/edit/1/;;
 esac"
 ```
+
+### Databases' volumes
+
+1. Delete db pods
+```
+kubectl rollout restart  deploy mysql-deployment
+kubectl rollout restart  deploy influxdb-deployment
+```
+2. Check WP + grafana is still working
