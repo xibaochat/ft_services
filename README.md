@@ -111,3 +111,24 @@ password: Xibaochat!
 UPDATE wp_users set user_pass = MD5('badpassword');
 2. Check you can login to wordpress with the new password
 ```
+
+
+### Grafana
+1. Get Loadbalancer IP
+```
+export GRAFANA_LB_IP="`kubectl get services grafana-svc --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`:5000"
+```
+2. Access website
+```
+bash <<< "
+case $(uname -s) in
+    Darwin*) open -a safari http://$GRAFANA_LB_IP;;
+    Linux*) firefox http://$GRAFANA_LB_IP;;
+esac"
+```
+3. Check available users:
+```
+# Admin user:
+login: sammy
+password: Xibaochat!
+```
