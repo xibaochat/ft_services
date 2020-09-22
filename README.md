@@ -114,9 +114,12 @@ UPDATE wp_users set user_pass = MD5('badpassword');
 
 
 ### Grafana
+
+* dashboard source: https://grafana.com/grafana/dashboards?search=kubernetes&dataSource=influxdb
+
 1. Get Loadbalancer IP
 ```
-export GRAFANA_LB_IP="`kubectl get services grafana-svc --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`:5000"
+export GRAFANA_LB_IP="`kubectl get services grafana-svc --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`:3000"
 ```
 2. Access website
 ```
@@ -129,6 +132,6 @@ esac"
 3. Check available users:
 ```
 # Admin user:
-login: sammy
-password: Xibaochat!
+login: admin
+password: kraken
 ```
