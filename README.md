@@ -29,8 +29,7 @@ minikube dashboard --url
 ### FTPs Server
 
 1. Install lftp
-2. Modify confing to support self-signed certificate
-add to config file "set ssl:verify-certificate false"
+2. Modify config file to support self-signed certificate
 ```
 case $(uname -s) in
 	Darwin*) LFTP_CONFIG_FILE=~/.brew/etc/lftp.conf;;
@@ -38,6 +37,12 @@ case $(uname -s) in
 esac
 echo "set ssl:verify-certificate false" >> $LFTP_CONFIG_FILE
 ```
+
+* If on Linux you get a permission denied, add the line manually in your config file.
+```
+sudo vi $LFTP_CONFIG_FILE
+```
+
 3. Get FTP load-balancer
 ```
 export LFTP_LB_IP=`kubectl get services  ftps-service --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`
