@@ -32,6 +32,9 @@ RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.14.5-static_linu
 RUN tar -xf telegraf-1.14.5-static_linux_amd64.tar.gz
 RUN mv telegraf/telegraf /usr/local/bin/
 
+#NGINX CONF
 COPY src/my_nginx.conf /etc/nginx/nginx.conf
+ARG LOADBALANCER_IP
+RUN sed  -i 's|LOADBALANCER_IP|'"$LOADBALANCER_IP"'|g' /etc/nginx/nginx.conf
 
 CMD ash /demarre_nginx_sshd_server

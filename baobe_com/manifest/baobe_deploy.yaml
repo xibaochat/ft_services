@@ -26,4 +26,4 @@ spec:
           name: telegraf-config
           readOnly: true
         ports:
-        - containerPort: 80
+        - containerPort: 5050
