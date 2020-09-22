@@ -10,4 +10,5 @@ RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.14.5-static_linu
 RUN tar -xf telegraf-1.14.5-static_linux_amd64.tar.gz
 RUN mv telegraf/telegraf /usr/local/bin/
 
-CMD telegraf -config /root/telegraf.toml & cd '/usr' && /usr/bin/mysqld_safe --datadir='/var/lib/mysql'
+COPY supervisord.conf /etc/supervisord.conf
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

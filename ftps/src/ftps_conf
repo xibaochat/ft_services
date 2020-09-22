@@ -1,7 +1,7 @@
 # https://stackoverflow.com/questions/60458028/ftps-server-doesnt-work-properly-using-kubernetes
 
 listen=YES
-background=YES
+background=NO
 local_enable=YES
 xferlog_enable=YES
 connect_from_port_20=YES

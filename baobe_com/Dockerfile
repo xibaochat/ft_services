@@ -7,7 +7,7 @@ RUN adduser -D -g 'www' www
 RUN mkdir /www
 RUN chown -R www:www /var/lib/nginx
 
-#add php
+# add php
 RUN apk add php7 php7-fpm php7-opcache php-json
 RUN apk add php7-gd php7-mysqli php7-zlib php7-curl
 
@@ -22,4 +22,7 @@ RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.14.5-static_linu
 RUN tar -xf telegraf-1.14.5-static_linux_amd64.tar.gz
 RUN mv telegraf/telegraf /usr/local/bin/
 COPY telegraf.toml /root/
-CMD telegraf -config /root/telegraf.toml & php-fpm7 && nginx -g "daemon off;"
+# we want every process to be able to crash the container
+RUN apk add supervisor
+COPY src/supervisord.conf /etc/supervisord.conf
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

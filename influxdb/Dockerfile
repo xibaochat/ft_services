@@ -10,4 +10,5 @@ RUN mv telegraf/telegraf /usr/local/bin/
 COPY local_telegraf.toml /root/
 
 #in the conf, needs to change URL as localhost
-CMD  telegraf -config /root/local_telegraf.toml & influxd
+COPY supervisord.conf /etc/supervisord.conf
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
