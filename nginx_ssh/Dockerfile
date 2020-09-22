@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN	apk update
-RUN apk add nginx openssh openssl
+RUN apk add nginx openssh openssl supervisor
 
 #SSH
 COPY src/sshd_conf /etc/ssh/sshd_config
@@ -16,7 +16,6 @@ WORKDIR /www
 RUN chown -R www:www /var/lib/nginx
 RUN	chown -R www:www /www
 COPY src/index.html  /www/index.html
-COPY src/demarre_nginx_sshd_server /demarre_nginx_sshd_server
 RUN echo "root:`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"|chpasswd
 
 # Generate SSL Certificate
@@ -37,4 +36,6 @@ COPY src/my_nginx.conf /etc/nginx/nginx.conf
 ARG LOADBALANCER_IP
 RUN sed  -i 's|LOADBALANCER_IP|'"$LOADBALANCER_IP"'|g' /etc/nginx/nginx.conf
 
-CMD ash /demarre_nginx_sshd_server
+COPY src/supervisord.conf /etc/supervisord.conf
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
