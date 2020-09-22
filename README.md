@@ -54,8 +54,11 @@ lftp -u maobe $LFTP_LB_IP
 
 ### Wordpress
 
-1. Get load-balancer IP
 ```
+bash <<< "
 export WP_LB_IP="`kubectl get services  baobe-service-http --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`:5050"
+case $(uname -s) in
+    Darwin*) open -a safari http://$WP_LB_IP;;
+    Linux*) firefox http://$WP_LB_IP;;
+esac"
 ```
-2.
