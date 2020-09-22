@@ -54,11 +54,25 @@ lftp -u maobe $LFTP_LB_IP
 
 ### Wordpress
 
+1. Get Loadbalancer IP
+```
+export WP_LB_IP="`kubectl get services  baobe-service-http --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`:5050"
+```
+2. Access website
 ```
 bash <<< "
-export WP_LB_IP="`kubectl get services  baobe-service-http --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`:5050"
 case $(uname -s) in
     Darwin*) open -a safari http://$WP_LB_IP;;
     Linux*) firefox http://$WP_LB_IP;;
 esac"
+```
+3. Check available users:
+```
+# Admin user:
+login: meilv
+password: new-password
+
+# Basic user I
+login: 42_user
+password: secretpassword
 ```
