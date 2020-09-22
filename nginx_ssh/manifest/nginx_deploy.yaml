@@ -22,7 +22,7 @@ spec:
       - name: nginx
         image: nginx_ssh:00
         volumeMounts:
-        - mountPath: /root
+        - mountPath: /telegraf/
           name: telegraf-config
           readOnly: true
         ports:
