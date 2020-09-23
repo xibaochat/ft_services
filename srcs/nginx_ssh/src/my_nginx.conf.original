@@ -1,0 +1,36 @@
+user www;
+
+worker_processes auto;
+
+error_log /var/log/nginx/error.log warn;
+pid		  logs/nginx.pid;
+events {
+	   worker_connections 1024;
+}
+
+http {
+		include /etc/nginx/mime.types;
+		default_type application/octet-stream;
+		server_tokens off;
+		client_max_body_size 1m;
+		keepalive_timeout 3000;
+		sendfile on;
+		access_log                  /var/log/nginx/access.log;
+
+		server {
+			   listen 80;
+    		   listen [::]:80;
+    		   server_name localhost;
+    		   return 301 https://$request_uri;
+			   	}
+
+		server {
+			   listen                  443 ssl;
+			   ssl_certificate /etc/nginx/ssl/nginx.crt;
+			   ssl_certificate_key /etc/nginx/ssl/nginx.key;
+		   	   root                    /www;
+			   index                   index.html index.htm;
+			   server_name             localhost;
+			   client_max_body_size    100M;
+	   }
+}
