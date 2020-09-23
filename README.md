@@ -22,7 +22,7 @@ esac
 ```
 4. Check ssh access
 ```
-ssh root@${NGINX_LB_IP} -i nginx_ssh/id
+ssh root@${NGINX_LB_IP} -i srcs/nginx_ssh/id
 ```
 
 ### Dashboard
