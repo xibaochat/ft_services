@@ -23,6 +23,5 @@ RUN touch /var/log/vsftpd.log && chown maobe: /var/log/vsftpd.log
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.14.5-static_linux_amd64.tar.gz
 RUN tar -xf telegraf-1.14.5-static_linux_amd64.tar.gz
 RUN mv telegraf/telegraf /usr/local/bin/
-COPY telegraf.toml /root/
 COPY src/supervisord.conf /etc/supervisord.conf
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
