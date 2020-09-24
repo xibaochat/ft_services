@@ -67,7 +67,7 @@ export WP_LB_IP="`kubectl get services  baobe-service-http --output jsonpath='{.
 bash <<< "
 case $(uname -s) in
     Darwin*) open -a safari http://$WP_LB_IP;;
-    Linux*) firefox http://$WP_LB_IP;;
+    Linux*) xdg-open http://$WP_LB_IP;;
 esac"
 ```
 3. Check available users: (to connect access http://$WP_LB_IP/wp-login.php)
@@ -95,7 +95,7 @@ export PMA_LB_IP="`kubectl get services pma-service --output jsonpath='{.status.
 bash <<< "
 case $(uname -s) in
     Darwin*) open -a safari http://$PMA_LB_IP;;
-    Linux*) firefox http://$PMA_LB_IP;;
+    Linux*) xdg-open http://$PMA_LB_IP;;
 esac"
 ```
 3. Check available users: (to connect access http://$WP_LB_IP/wp-login.php)
@@ -130,7 +130,7 @@ export GRAFANA_LB_IP="`kubectl get services grafana-svc --output jsonpath='{.sta
 bash <<< "
 case $(uname -s) in
     Darwin*) open -a safari http://$GRAFANA_LB_IP;;
-    Linux*) firefox http://$GRAFANA_LB_IP;;
+    Linux*) xdg-open http://$GRAFANA_LB_IP;;
 esac"
 ```
 3. Check available users:
@@ -144,7 +144,7 @@ password: kraken
 bash <<< "
 case $(uname -s) in
     Darwin*) open -a safari http://$GRAFANA_LB_IP/datasources/edit/1/;;
-    Linux*) firefox http://$GRAFANA_LB_IP/datasources/edit/1/;;
+    Linux*) xdg-open http://$GRAFANA_LB_IP/datasources/edit/1/;;
 esac"
 ```
 
