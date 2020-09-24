@@ -1,5 +1,7 @@
 # Ft_Services
 
+![Infrastructure schema](https://raw.githubusercontent.com/xibaochat/ft_services/master/srcs/infrastructure_schema.svg)
+
 ## Correction
 
 ### Nginx_ssh
