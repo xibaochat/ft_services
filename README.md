@@ -1,6 +1,35 @@
 # Ft_Services
+42 project, setup of a Kubernetes cluster. Services include an nginx, an FTPS, a Wordpress and a PHPMyAdmin working with a MySQL database, and a Grafana linked to an InfluxDB database for monitoring. The script builds the custom Docker images for each of those, before deploying and exposing them all with custom yaml files.
 
-![Infrastructure schema](https://raw.githubusercontent.com/xibaochat/ft_services/master/srcs/infrastructure_schema.svg)
+<p align="center">
+<img src="https://img.shields.io/badge/kubernetes-007ACC?style=for-the-badge&logo=kubernetes&logoColor=white">
+<img src="https://img.shields.io/badge/docker-007ACC?style=for-the-badge&logo=docker&logoColor=white">
+</p>
+  <table align="center">
+<td>
+ <b face="arial" >final mark<br><br></font></b></p>
+ <img src="https://github.com/xibaochat/ft_server/blob/master/ft_server_final_mark.png">
+ 
+
+</td>
+
+<td>
+
+| interest                     | number of team          | difficulty                      |
+| ---------------------------- | ----------              | ----------                      |
+|    :star::star::star::star: | :cat: |  :star::star::star::star::star: |
+
+</td>
+</tr>
+</table>
+
+
+
+
+![Infrastructure schema](https://github.com/xibaochat/ft_services/blob/master/ft_services.png)
+
+## Subject 
+[en.subject.pdf](https://github.com/xibaochat/ft_services/blob/master/ft_services_subject.pdf)
 
 ## Correction
 
