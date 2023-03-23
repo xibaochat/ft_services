@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
   example-job:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
     name: Save output
     steps:
       - shell: bash
